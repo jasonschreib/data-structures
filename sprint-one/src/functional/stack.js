@@ -18,6 +18,8 @@ var Stack = function() {
   someInstance.pop = function() {
     //set element at the top to popped var
     var popped = storage[JSON.stringify(count)];
+    //remove the element from the obj
+    delete storage[JSON.stringify(count)];
     //decrement the count by one
     count--;
     //edge case if stack size reaches below or at zero
