@@ -20,15 +20,15 @@ var Stack = function() {
     var popped = storage[JSON.stringify(count)];
     //decrement the count by one
     count--;
+    //edge case if stack size reaches below or at zero
+    if (count <= 0) {
+      count = 0;
+    }
     //return the popped var
     return popped;
   };
 
   someInstance.size = function() {
-    //edge case if stack size reaches below or at zero
-    if (count <= 0) {
-      count = 0;
-    }
     //return the count var
     return count;
   };
