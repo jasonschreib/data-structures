@@ -6,7 +6,7 @@ var Stack = function() {
   var newStack = {};
   //extend the functions from the stackMethods object
   _.extend(newStack, stackMethods);
-  //add count prop - this is unique for each stack
+  //add count prop - unique for each stack
   newStack.count = 0;
   //return the new instance
   return newStack;
