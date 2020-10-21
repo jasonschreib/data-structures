@@ -6,6 +6,7 @@ var Queue = function() {
   var newQueue = {};
   //extend the functions of queueMethods to the new queue object
   _.extend(newQueue, queueMethods);
+  //add the storage obj to the instance
   newQueue.storage = {};
   //add totalElements prop that is unique to the new queue - set it to 0
   newQueue.totalElements = 0;
@@ -26,14 +27,12 @@ queueMethods.enqueue = function(value) {
   this.back++;
   //increase the totalElements by one
   this.totalElements++;
-  console.log(this.storage);
 };
 queueMethods.dequeue = function() {
   //remove the element at the front
   //create variable for element to be returned
   //var dequeued = this[JSON.stringify(this.frontElem)];
   var dequeued = this.storage[this.frontElem];
-  console.log(dequeued);
   //delete the current front
   delete this.storage[this.frontElement];
   //increase the frontElem variable by 1
