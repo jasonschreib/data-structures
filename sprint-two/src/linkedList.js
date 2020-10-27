@@ -1,4 +1,3 @@
-
 var LinkedList = function() {
   var list = {};
   list.head = null;
@@ -39,7 +38,7 @@ var LinkedList = function() {
     }
 
     return list.contains(target, node.next);
-
+  };
   return list;
 };
 
