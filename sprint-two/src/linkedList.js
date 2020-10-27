@@ -1,3 +1,4 @@
+
 var LinkedList = function() {
   var list = {};
   list.head = null;
@@ -11,27 +12,33 @@ var LinkedList = function() {
       list.head = newNode;
       list.tail = newNode;
     } else {
+      list.tail.next = newNode;
       list.tail = newNode;
-      for (node in list) {
-        var size = _.size(list);
-        console.log(size);
-        if (node.next === null && size === list.listSize) {
-          node.next = newNode;
-        }
-        list.listSize++;
-      }
+
     }
   };
 
   list.removeHead = function() {
     var secondItem = list.head.next;
     console.log(secondItem);
+    var oldHead = list.head.value;
     delete list.head;
     list.head = secondItem;
+    return oldHead;
   };
 
-  list.contains = function(target) {
-  };
+  list.contains = function(target, node) {
+    if (node === undefined) {
+      return list.contains(target, list.head);
+    }
+    if (node.value === target) {
+      return true;
+    }
+    if (node.next === null) {
+      return false;
+    }
+
+    return list.contains(target, node.next);
 
   return list;
 };
