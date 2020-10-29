@@ -28,17 +28,20 @@ treeMethods.contains = function(target, tree) {
       tree = this.children;
     }
   }
-  //check to see if tree is an array
-  if (Array.isArray(tree)) {
-    debugger;
-    //loop over array and check the vals
-    for (var i = 0; i < tree.length; i++) {
-      if (tree[i].value === target) {
-        console.log(tree[i].value, target);
-        return true;
-      }
-      if (tree[i].children.length > 0) {
-        return this.contains(target, tree[i].children);
+
+  //loop over array and check the vals
+  for (var i = 0; i < tree.length; i++) {
+    console.log(tree[i].value, '--', target);
+    if (tree[i].value === target) {
+      return true;
+    }
+    if (tree[i].children.length > 0) {
+      for (j = 0; j < tree[i].children.length; j++) {
+        if (tree[i].children[j].value === target) {
+          return true;
+        } else if (tree[i].children[j].children > 0) {
+          return this.contains(target, tree[i].children[j].children);
+        }
       }
     }
   }
