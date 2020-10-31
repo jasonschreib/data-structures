@@ -19,7 +19,6 @@ var LinkedList = function() {
 
   list.removeHead = function() {
     var secondItem = list.head.next;
-    console.log(secondItem);
     var oldHead = list.head.value;
     delete list.head;
     list.head = secondItem;

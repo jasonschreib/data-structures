@@ -31,7 +31,6 @@ treeMethods.contains = function(target, tree) {
 
   //loop over array and check the vals
   for (var i = 0; i < tree.length; i++) {
-    console.log(tree[i].value, '--', target);
     if (tree[i].value === target) {
       return true;
     }
