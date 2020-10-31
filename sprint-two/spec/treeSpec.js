@@ -41,4 +41,11 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should correctly add nested children', function() {
+    tree.addChild(1);
+    tree.children[0].addChild(3);
+    tree.children[0].children[0].addChild(5);
+    expect(tree.contains(5)).to.equal(true);
+  });
+
 });

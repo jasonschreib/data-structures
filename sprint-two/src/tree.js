@@ -19,36 +19,40 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target, tree) {
-  //recursively iterate through the tree
-  //initiate the recursion when tree is undefined
+  // check if tree is undefined
   if (tree === undefined) {
+    result = false;
     if (this.value === target) {
-      return true;
-    } else {
-      tree = this.children;
+      result = true;
     }
-  }
-
-  //loop over array and check the vals
-  for (var i = 0; i < tree.length; i++) {
-    if (tree[i].value === target) {
-      return true;
+    // loop over this.children with _.each
+    for (var i = 0; i < this.children.length; i++) {
+      // if current value === the target
+      if (this.children[i].value === target) {
+        // return true
+        result = true;
+      } else if (this.children[i].children.length > 0) {
+        this.contains(target, this.children[i]);
+      }
     }
-    if (tree[i].children.length > 0) {
-      for (j = 0; j < tree[i].children.length; j++) {
-        if (tree[i].children[j].value === target) {
-          return true;
-        } else if (tree[i].children[j].children > 0) {
-          return this.contains(target, tree[i].children[j].children);
-        }
+    // return false
+    return result;
+  } else {
+    // if tree is not undefined
+    // loop over tree.chilren with _.each
+    for (var i = 0; i < tree.children.length; i++) {
+      // if current value === the target
+      if (tree.children[i].value === target) {
+        result = true;
+      } else if (tree.children[i].children.length > 0) {
+        tree.contains(target, tree.children[i]);
       }
     }
   }
-  return false;
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * .addChild = O(1) - constant
+ * .contains = O(n) - linear
  */

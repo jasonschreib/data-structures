@@ -51,5 +51,24 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
-  // add more tests here to test the functionality of linkedList
+  it('should update the head when multiple heads are removed', function() {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.head.value).to.equal(3);
+  });
+
+  it('should allow multiple duplicate values', function() {
+    linkedList.addToTail(9);
+    linkedList.addToTail(9);
+    linkedList.addToTail(9);
+    linkedList.addToTail(9);
+    linkedList.removeHead();
+    expect(linkedList.contains(9)).to.equal(true);
+  });
+
 });
