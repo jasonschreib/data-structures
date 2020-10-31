@@ -65,6 +65,8 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * Technically, each of these functions are linear time;
+ * However, the function as a whole should still be closer to constant time than linear
  */
 
 
